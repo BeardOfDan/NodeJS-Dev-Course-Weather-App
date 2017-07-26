@@ -9,7 +9,7 @@ request({
   if (error) {
 
   } else {
-    console.log(body);
+    console.log(JSON.stringify(body, undefined, 2));
   }
 
 });
