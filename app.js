@@ -26,9 +26,13 @@ request({
   if (error) {
     console.log("There was an error!");
     console.log(JSON.stringify(error, undefined, 2));
-  } else {
+  } else if ((body.status === "ZERO_RESULTS") || (body.results === [])) {
+    console.log("That address is invalid!");
+  } else if (body.status === "OK") {
     console.log(`Address: ${body.results[0].formatted_address}
 Lat: ${body.results[0].geometry.location.lat}
 Lng: ${body.results[0].geometry.location.lng}`);
+  } else {
+    console.log("Unpredicted situation!\nCongratulations, you broke my program. I wonder what happened?");
   }
 });
